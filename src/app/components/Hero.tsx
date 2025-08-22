@@ -32,7 +32,7 @@ const Hero = () => {
     el.appendChild(renderer.domElement);
 
     /* geometry */
-    const COUNT = 3_000;
+    const COUNT = 1_000;
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
     const sizes = new Float32Array(COUNT);
@@ -151,7 +151,7 @@ const Hero = () => {
         </p>
         <a
           href="#contact"
-          className="mt-10 inline-block rounded-md bg-brand-purple px-8 py-4 text-lg font-semibold transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal"
+          className="mt-10 inline-block rounded-md bg-purple-700 px-8 py-4 text-lg font-semibold transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal"
         >
           Book a Free Consultation
         </a>

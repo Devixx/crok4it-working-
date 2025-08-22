@@ -29,7 +29,7 @@ interface InputProps
   textarea?: boolean;
 }
 const FloatingInput: React.FC<InputProps> = ({ label, textarea, ...props }) => {
-  const Tag: any = textarea ? "textarea" : "input";
+  const Tag: React.ElementType = textarea ? "textarea" : "input";
   return (
     <div className="relative">
       <Tag

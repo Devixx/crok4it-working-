@@ -484,7 +484,7 @@ const BlogClient: React.FC<BlogClientProps> = ({ articles }) => {
             <motion.a
               variants={fadeUp}
               href="/#contact"
-              className="inline-block rounded-md bg-brand-purple px-8 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
+              className="inline-block rounded-md bg-purple-700 px-8 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
             >
               Get in Touch
             </motion.a>

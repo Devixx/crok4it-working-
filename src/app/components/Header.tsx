@@ -112,7 +112,7 @@ const Header: React.FC = () => {
           <a
             href="/#contact"
             onClick={(e) => handleSectionNavigation(e, "contact")}
-            className="rounded-md bg-brand-purple px-5 py-2 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90"
+            className="rounded-md bg-purple-700 px-5 py-2 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90"
           >
             Contact&nbsp;Us
           </a>
@@ -180,7 +180,7 @@ const Header: React.FC = () => {
           <a
             href="/#contact"
             onClick={(e) => handleSectionNavigation(e, "contact")}
-            className="w-full rounded-md bg-brand-purple px-6 py-3 text-center text-lg text-white transition-colors hover:bg-brand-purple/90"
+            className="w-full rounded-md bg-purple-700 px-6 py-3 text-center text-lg text-white transition-colors hover:bg-brand-purple/90"
           >
             Contact&nbsp;Us
           </a>

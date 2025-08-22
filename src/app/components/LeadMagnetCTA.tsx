@@ -28,9 +28,9 @@ const LeadMagnetCTA = () => {
           Unlock Your Business Potential
         </h2>
         <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-          Download our free guide, "The Luxembourg SME's Roadmap to Secure Cloud
-          Adoption," and learn the 5 critical steps to modernize your
-          infrastructure.
+          Download our free guide, &quot;The Luxembourg SME&#39;s Roadmap to
+          Secure Cloud Adoption,&quot; and learn the 5 critical steps to
+          modernize your infrastructure.
         </p>
         <form
           onSubmit={handleSubmit}

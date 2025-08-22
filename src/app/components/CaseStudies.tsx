@@ -29,9 +29,9 @@ const CaseStudies = () => {
             Our Success Stories
           </h2>
           <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
-            We deliver tangible results. Discover how we've helped businesses
-            like yours overcome complex challenges and achieve their strategic
-            goals.
+            We deliver tangible results. Discover how we&#39;ve helped
+            businesses like yours overcome complex challenges and achieve their
+            strategic goals.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">

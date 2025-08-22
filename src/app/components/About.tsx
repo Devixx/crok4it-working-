@@ -2,7 +2,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
+import crok4itWorkspace from "../../assets/img/crok4it.png";
 
 /* ── data (unchanged) ─────────────────────────────────────────── */
 const teamMembers = [
@@ -103,10 +105,12 @@ const About: React.FC = () => {
             className="relative"
           >
             <div className="absolute -top-4 -left-4 h-full w-full -rotate-3 rounded-lg bg-brand-purple/50" />
-            <img
-              src="https://placehold.co/600x400/1a202c/ffffff?text=Crok4IT+Workspace"
-              alt="Crok4IT Team Collaborating"
-              className="relative z-10 rounded-lg shadow-2xl"
+            <Image
+              src={crok4itWorkspace}
+              alt="Crok4it workspace"
+              width={800} // Adjust based on your layout
+              height={600} // Adjust based on your layout
+              className="workspace-img"
             />
           </motion.div>
 
@@ -117,9 +121,9 @@ const About: React.FC = () => {
             animate={blockIn ? "visible" : "hidden"}
           >
             <h2 className="text-4xl font-extrabold md:text-5xl">
-              We're Not Just Consultants.
+              We&apos;re Not Just Consultants.
               <br />
-              We're Your{" "}
+              We&#39;re Your{" "}
               <span className="text-brand-teal">Technology Partners.</span>
             </h2>
 
