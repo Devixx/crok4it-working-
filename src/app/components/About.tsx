@@ -2,9 +2,9 @@
 "use client";
 
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
 
-/* ── data ────────────────────────────────────────────────────── */
+/* ── data (unchanged) ─────────────────────────────────────────── */
 const teamMembers = [
   {
     name: "Marouen Chaouachi",
@@ -23,106 +23,160 @@ const teamMembers = [
   },
 ];
 
-/* motion presets ------------------------------------------------ */
-const imgVariants = {
-  hidden: { opacity: 0, scale: 0.9, rotate: -4 },
-  visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 0.7 } },
-};
+/* ── helpers ──────────────────────────────────────────────────── */
+/* card parallax based on cursor position */
+function useCardParallax(range = 20) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-const cardVariants = {
-  off: { opacity: 0, y: 40 },
-  on: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const handle = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const dx = e.clientX - rect.left - rect.width / 2;
+      const dy = e.clientY - rect.top - rect.height / 2;
+      x.set((dx / rect.width) * range);
+      y.set((dy / rect.height) * range);
+    };
+
+    el.addEventListener("mousemove", handle);
+    el.addEventListener("mouseleave", () => {
+      x.set(0);
+      y.set(0);
+    });
+
+    return () => {
+      el.removeEventListener("mousemove", handle);
+    };
+  }, [range, x, y]);
+
+  return { ref, x, y };
+}
+
+/* variant presets */
+const fadeLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+};
+const fadeRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+};
+const cardShow = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const About: React.FC = () => {
-  /* trigger main block once 20 % is visible */
-  const ref = React.useRef<HTMLDivElement>(null);
-  const shown = useInView(ref, { once: true, amount: 0.2 });
+  /* reveal triggers */
+  const blockRef = React.useRef<HTMLDivElement>(null);
+  const blockIn = useInView(blockRef, { once: true, amount: 0.25 });
+
+  const teamRef = React.useRef<HTMLDivElement>(null);
+  const teamIn = useInView(teamRef, { once: true, amount: 0.15 });
 
   return (
     <section
       id="about"
-      className="w-full bg-brand-dark py-20 md:py-28 text-white"
+      className="relative w-full bg-brand-dark py-20 md:py-32 text-white overflow-hidden"
     >
-      <div className="container mx-auto px-4">
-        {/* ── intro split block ────────────────────────────── */}
-        <motion.div
-          ref={ref}
-          variants={imgVariants}
-          initial="hidden"
-          animate={shown ? "visible" : "hidden"}
-          className="grid items-center gap-16 md:grid-cols-2 mb-24"
-        >
-          <div className="relative">
-            {/* decorative skewed shadow */}
-            <div className="absolute -top-4 -left-4 h-full w-full -rotate-3 rounded-lg bg-brand-purple/50"></div>
+      {/* decorative radial gradient blur */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -translate-x-1/2 left-1/2 top-1/2 h-[900px] w-[900px] rounded-full bg-brand-purple/20 blur-[150px]"
+      />
 
+      <div className="container mx-auto px-4">
+        {/* split block */}
+        <div
+          ref={blockRef}
+          className="grid items-center gap-16 md:grid-cols-2 mb-28"
+        >
+          {/* image */}
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            animate={blockIn ? "visible" : "hidden"}
+            className="relative"
+          >
+            <div className="absolute -top-4 -left-4 h-full w-full -rotate-3 rounded-lg bg-brand-purple/50" />
             <img
               src="https://placehold.co/600x400/1a202c/ffffff?text=Crok4IT+Workspace"
               alt="Crok4IT Team Collaborating"
               className="relative z-10 rounded-lg shadow-2xl"
             />
-          </div>
+          </motion.div>
 
-          <div>
-            <h2 className="mb-6 text-4xl font-extrabold md:text-5xl">
+          {/* copy */}
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            animate={blockIn ? "visible" : "hidden"}
+          >
+            <h2 className="text-4xl font-extrabold md:text-5xl">
               We're Not Just Consultants.
               <br />
               We're Your{" "}
               <span className="text-brand-teal">Technology Partners.</span>
             </h2>
-            <p className="mb-4 text-lg text-gray-300">
+
+            <p className="mt-6 text-lg text-gray-300">
               Founded in Luxembourg, Crok4IT was built on a single principle: to
               provide unparalleled IT expertise with a deeply collaborative,
-              client-first approach. We believe that technology should be an
-              enabler of ambition, not a barrier to it.
+              client-first approach.
             </p>
-            <p className="text-lg text-gray-300">
-              Our mission is to work alongside you as a true partner, embedding
-              ourselves in your challenges and dedicating our collective
-              experience to architecting solutions that deliver measurable,
-              lasting value.
+            <p className="mt-4 text-lg text-gray-300">
+              Our mission is to embed ourselves in your challenges and dedicate
+              our collective experience to architecting solutions that deliver
+              measurable, lasting value.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
-        {/* ── leadership grid ─────────────────────────────── */}
-        <h3 className="mb-16 text-center text-4xl font-extrabold">
+        {/* leadership grid */}
+        <h3 className="text-center text-4xl font-extrabold">
           Meet&nbsp;Our&nbsp;Leadership
         </h3>
 
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-          {teamMembers.map(({ name, role, imageUrl }, i) => (
-            <motion.article
-              key={name}
-              variants={cardVariants}
-              initial="off"
-              animate={shown ? "on" : "off"}
-              transition={{ delay: 0.15 * i }}
-              whileHover={{
-                y: -6,
-                scale: 1.04,
-                transition: { type: "spring", stiffness: 260, damping: 18 },
-              }}
-              className="group text-center"
-            >
-              <div className="relative inline-block mb-4">
-                <motion.img
-                  whileHover={{ rotate: 2 }}
-                  src={imageUrl}
-                  alt={name}
-                  className="h-48 w-48 rounded-full object-cover shadow-lg"
-                />
-                <div className="absolute inset-0 rounded-full border-4 border-transparent transition-colors duration-300 group-hover:border-brand-teal"></div>
-              </div>
-              <h4 className="text-2xl font-bold">{name}</h4>
-              <p className="font-semibold text-brand-teal">{role}</p>
-            </motion.article>
-          ))}
+        <div
+          ref={teamRef}
+          className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3"
+        >
+          {teamMembers.map(({ name, role, imageUrl }, i) => {
+            const { ref, x, y } = useCardParallax(10);
+            const rotateX = useTransform(y, [-10, 10], [8, -8]);
+            const rotateY = useTransform(x, [-10, 10], [-8, 8]);
+
+            return (
+              <motion.article
+                key={name}
+                variants={cardShow}
+                initial="hidden"
+                animate={teamIn ? "visible" : "hidden"}
+                transition={{ delay: 0.15 * i }}
+              >
+                <motion.div
+                  ref={ref}
+                  style={{ rotateX, rotateY }}
+                  className="relative mx-auto mb-4 h-48 w-48 rounded-full shadow-xl will-change-transform"
+                >
+                  <img
+                    src={imageUrl}
+                    alt={name}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                  <div className="absolute inset-0 rounded-full border-4 border-transparent transition-colors duration-300 group-hover:border-brand-teal" />
+                </motion.div>
+                <h4 className="text-center text-2xl font-bold">{name}</h4>
+                <p className="text-center font-semibold text-brand-teal">
+                  {role}
+                </p>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

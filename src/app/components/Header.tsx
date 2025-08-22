@@ -3,102 +3,119 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import Logo from "./Logo";
-
-/*
-  Tailwind prerequisites:
-  • text-brand-dark   → dark gray / black (#141414 or similar)
-  • text-brand-teal   → #4ADBC8
-  • bg-brand-purple   → #6C22D9
-*/
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   /* scroll listener */
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
-    onScroll(); // initialise once
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* smooth-scroll helper */
-  const handleLinkClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    targetId?: string
-  ) => {
-    if (targetId) {
-      e.preventDefault();
-      const el = document.getElementById(targetId);
-      if (el) {
-        window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
-      }
+  /* Handle hash navigation from any page */
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && pathname === "/") {
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     }
+  }, [pathname]);
+
+  /* Universal navigation handler for sections */
+  const handleSectionNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+
+    if (pathname === "/") {
+      // Already on home page, smooth scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home page with hash
+      router.push(`/#${sectionId}`);
+    }
+    setIsMenuOpen(false);
+  };
+
+  /* Regular page navigation */
+  const handlePageNavigation = () => {
     setIsMenuOpen(false);
   };
 
   /* classes */
   const linkColour = isScrolled ? "text-black" : "text-white";
-
-  const navLink = `
-  relative text-lg font-medium ${linkColour}
-  transition-colors duration-300 group
-  hover:text-brand-teal
-`.trim();
-
-  const iconStroke = isScrolled ? "brand-dark" : "text-white";
+  const navLink = `relative text-lg font-medium ${linkColour} transition-colors duration-300 group hover:text-brand-teal`;
+  const iconStroke = isScrolled ? "text-black" : "text-white";
   const headerBg = isScrolled
     ? "bg-white/90 backdrop-blur shadow-md"
     : "bg-transparent";
 
-  /* JSX */
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${headerBg}`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* logo swaps theme */}
+        {/* logo - handles its own navigation internally */}
         <Logo theme={isScrolled ? "light" : "dark"} />
 
         {/* desktop navigation */}
         <nav className="hidden items-center space-x-8 md:flex">
-          <Link
+          <a
             href="/#services"
+            onClick={(e) => handleSectionNavigation(e, "services")}
             className={navLink}
-            onClick={(e) => handleLinkClick(e, "services")}
           >
             Services
             <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
-          </Link>
+          </a>
 
+          {/* SUCCESS STORIES - Navigate to separate page */}
           <Link
-            href="/#case-studies"
+            href="/case-studies"
             className={navLink}
-            onClick={(e) => handleLinkClick(e, "case-studies")}
+            onClick={handlePageNavigation}
           >
             Success&nbsp;Stories
             <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
-          <Link href="/blog" className={navLink}>
+          <Link href="/blog" className={navLink} onClick={handlePageNavigation}>
             Insights
             <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
-          <Link href="/careers" className={navLink}>
+          <Link
+            href="/careers"
+            className={navLink}
+            onClick={handlePageNavigation}
+          >
             Careers
             <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
-          <Link
+          <a
             href="/#contact"
-            onClick={(e) => handleLinkClick(e, "contact")}
-            className={navLink}
+            onClick={(e) => handleSectionNavigation(e, "contact")}
+            className="rounded-md bg-brand-purple px-5 py-2 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90"
           >
             Contact&nbsp;Us
-          </Link>
+          </a>
         </nav>
 
         {/* hamburger */}
@@ -127,41 +144,46 @@ const Header: React.FC = () => {
       {/* mobile menu */}
       {isMenuOpen && (
         <nav className="absolute top-full left-0 flex w-full flex-col items-center space-y-6 bg-white p-6 shadow-lg md:hidden">
-          <Link
+          <a
             href="/#services"
-            className="text-lg text-brand-dark transition-colors hover:text-brand-teal"
-            onClick={(e) => handleLinkClick(e, "services")}
+            onClick={(e) => handleSectionNavigation(e, "services")}
+            className="text-lg text-black transition-colors hover:text-brand-teal"
           >
             Our&nbsp;Services
-          </Link>
+          </a>
+
+          {/* SUCCESS STORIES - Mobile version */}
           <Link
-            href="/#case-studies"
-            className="text-lg text-brand-dark transition-colors hover:text-brand-teal"
-            onClick={(e) => handleLinkClick(e, "case-studies")}
+            href="/case-studies"
+            className="text-lg text-black transition-colors hover:text-brand-teal"
+            onClick={handlePageNavigation}
           >
             Success&nbsp;Stories
           </Link>
+
           <Link
             href="/blog"
-            className="text-lg text-brand-dark transition-colors hover:text-brand-teal"
-            onClick={(e) => handleLinkClick(e)}
+            className="text-lg text-black transition-colors hover:text-brand-teal"
+            onClick={handlePageNavigation}
           >
             Insights
           </Link>
+
           <Link
             href="/careers"
-            className="text-lg text-brand-dark transition-colors hover:text-brand-teal"
-            onClick={(e) => handleLinkClick(e)}
+            className="text-lg text-black transition-colors hover:text-brand-teal"
+            onClick={handlePageNavigation}
           >
             Careers
           </Link>
-          <Link
+
+          <a
             href="/#contact"
+            onClick={(e) => handleSectionNavigation(e, "contact")}
             className="w-full rounded-md bg-brand-purple px-6 py-3 text-center text-lg text-white transition-colors hover:bg-brand-purple/90"
-            onClick={(e) => handleLinkClick(e, "contact")}
           >
             Contact&nbsp;Us
-          </Link>
+          </a>
         </nav>
       )}
     </header>
