@@ -9,19 +9,19 @@ import crok4itWorkspace from "../../assets/img/crok4it.png";
 /* ── data (unchanged) ─────────────────────────────────────────── */
 const teamMembers = [
   {
-    name: "Marouen Chaouachi",
+    name: "Dorra Saihi",
     role: "Founder & CEO",
-    imageUrl: "https://placehold.co/400x400/6C22D9/ffffff?text=MC",
+    imageUrl: "https://placehold.co/400x400/6C22D9/ffffff?text=DS",
   },
   {
-    name: "Jane Doe",
+    name: "Yassine Khalfaoui",
     role: "Lead Cloud Architect",
-    imageUrl: "https://placehold.co/400x400/4ADBC8/ffffff?text=JD",
+    imageUrl: "https://placehold.co/400x400/4ADBC8/ffffff?text=YK",
   },
   {
-    name: "John Smith",
-    role: "Head of Cybersecurity",
-    imageUrl: "https://placehold.co/400x400/1a202c/ffffff?text=JS",
+    name: "Marouen Chaouachi",
+    role: "Senior Software Engineer",
+    imageUrl: "https://placehold.co/400x400/1a202c/ffffff?text=MC",
   },
 ];
 
