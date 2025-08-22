@@ -366,8 +366,8 @@ const CaseStudiesPage: React.FC = () => {
               variants={fadeUp}
               className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
             >
-              Discover how we've helped businesses across Luxembourg transform
-              their IT infrastructure and achieve remarkable results.
+              Discover how we&apos;ve helped businesses across Luxembourg
+              transform their IT infrastructure and achieve remarkable results.
             </motion.p>
           </motion.div>
         </div>
@@ -513,7 +513,7 @@ const CaseStudiesPage: React.FC = () => {
               variants={fadeUp}
               className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto"
             >
-              Let's discuss how we can help transform your business with
+              Let&apos;s discuss how we can help transform your business with
               cutting-edge IT solutions tailored to your unique needs.
             </motion.p>
             <motion.a

@@ -41,6 +41,14 @@ const FloatingGeometryBackground: React.FC = () => {
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
+    /* Define shape user data interface */
+    interface ShapeUserData {
+      initialY: number;
+      speedY: number;
+      speedRotation: number;
+      amplitude: number;
+    }
+
     /* Create floating geometric shapes */
     const shapes: THREE.Mesh[] = [];
     const shapeCount = 25;
@@ -105,7 +113,7 @@ const FloatingGeometryBackground: React.FC = () => {
       shape.scale.setScalar(scale);
 
       // Store initial values for animation
-      (shape as any).userData = {
+      (shape.userData as ShapeUserData) = {
         initialY: shape.position.y,
         speedY: 0.01 + Math.random() * 0.02,
         speedRotation: 0.005 + Math.random() * 0.01,
@@ -172,7 +180,7 @@ const FloatingGeometryBackground: React.FC = () => {
 
       // Animate shapes
       shapes.forEach((shape, i) => {
-        const userData = (shape as any).userData;
+        const userData = shape.userData as ShapeUserData;
 
         // Floating motion
         shape.position.y =
@@ -449,7 +457,7 @@ const BlogClient: React.FC<BlogClientProps> = ({ articles }) => {
                   No Articles Yet
                 </h3>
                 <p className="text-gray-300">
-                  We're working on some great content. Check back soon!
+                  We&#39;re working on some great content. Check back soon!
                 </p>
               </div>
             </motion.div>

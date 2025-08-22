@@ -385,11 +385,11 @@ const CareersPage: React.FC = () => {
               className="mt-12 rounded-lg border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm"
             >
               <h3 className="mb-4 text-xl font-bold text-brand-teal">
-                Don't See Your Role?
+                Don&apos;t See Your Role?
               </h3>
               <p className="mb-4 text-gray-300">
-                We're always interested in hearing from talented professionals
-                who share our passion for innovation.
+                We&apos;re always interested in hearing from talented
+                professionals who share our passion for innovation.
               </p>
               <p className="text-gray-300">
                 Send your resume to{" "}
@@ -426,7 +426,7 @@ const CareersPage: React.FC = () => {
               className="mx-auto mb-8 max-w-2xl text-lg text-gray-300"
             >
               Join a team that values innovation, collaboration, and excellence.
-              Let's build something extraordinary together.
+              Let&apos;s build something extraordinary together.
             </motion.p>
             <motion.a
               variants={fadeUp}
