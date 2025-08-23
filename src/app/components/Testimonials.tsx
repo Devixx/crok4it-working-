@@ -78,7 +78,7 @@ const Testimonials: React.FC = () => {
       {/* background blur accent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-brand-purple/15 blur-[160px]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-purple-700/15 blur-[160px]"
       />
 
       <div className="container mx-auto px-4">
@@ -144,7 +144,7 @@ const Testimonials: React.FC = () => {
           <button
             aria-label="Previous testimonial"
             onClick={() => paginate(-1)}
-            className="group rounded-full border border-brand-teal/40 p-3 transition hover:bg-brand-teal/10"
+            className="group rounded-full border border-brand-teal/40 p-3 transition hover:bg-teal-500/10"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@ const Testimonials: React.FC = () => {
                 className={`h-2.5 w-2.5 rounded-full transition
                   ${
                     i === idx
-                      ? "scale-125 bg-brand-teal"
+                      ? "scale-125 bg-teal-500"
                       : "bg-gray-500 hover:bg-gray-400"
                   }`}
               />
@@ -181,7 +181,7 @@ const Testimonials: React.FC = () => {
           <button
             aria-label="Next testimonial"
             onClick={() => paginate(1)}
-            className="group rounded-full border border-brand-teal/40 p-3 transition hover:bg-brand-teal/10"
+            className="group rounded-full border border-brand-teal/40 p-3 transition hover:bg-teal-500/10"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

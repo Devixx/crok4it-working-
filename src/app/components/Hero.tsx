@@ -151,7 +151,7 @@ const Hero = () => {
         </p>
         <a
           href="#contact"
-          className="mt-10 inline-block rounded-md bg-purple-700 px-8 py-4 text-lg font-semibold transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal"
+          className="mt-10 inline-block rounded-md bg-purple-700 px-8 py-4 text-lg font-semibold transition-transform duration-300 hover:scale-105 hover:bg-purple-700/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-teal"
         >
           Book a Free Consultation
         </a>

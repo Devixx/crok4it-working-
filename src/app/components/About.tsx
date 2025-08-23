@@ -88,7 +88,7 @@ const About: React.FC = () => {
       {/* decorative radial gradient blur */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -translate-x-1/2 left-1/2 top-1/2 h-[900px] w-[900px] rounded-full bg-brand-purple/20 blur-[150px]"
+        className="pointer-events-none absolute -translate-x-1/2 left-1/2 top-1/2 h-[900px] w-[900px] rounded-full bg-purple-700/20 blur-[150px]"
       />
 
       <div className="container mx-auto px-4">
@@ -104,7 +104,7 @@ const About: React.FC = () => {
             animate={blockIn ? "visible" : "hidden"}
             className="relative"
           >
-            <div className="absolute -top-4 -left-4 h-full w-full -rotate-3 rounded-lg bg-brand-purple/50" />
+            <div className="absolute -top-4 -left-4 h-full w-full -rotate-3 rounded-lg bg-purple-700/50" />
             <Image
               src={crok4itWorkspace}
               alt="Crok4it workspace"

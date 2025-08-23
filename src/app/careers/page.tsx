@@ -286,7 +286,7 @@ const CareersPage: React.FC = () => {
             <motion.a
               variants={fadeUp}
               href="#openings"
-              className="inline-block rounded-md bg-brand-purple px-8 py-4 text-lg font-semibold transition-transform hover:scale-105"
+              className="inline-block rounded-md bg-purple-700 px-8 py-4 text-lg font-semibold transition-transform hover:scale-105"
             >
               View Opportunities
             </motion.a>
@@ -371,7 +371,7 @@ const CareersPage: React.FC = () => {
                       </p>
                       <p className="text-gray-300">{description}</p>
                     </div>
-                    <button className="rounded-md border border-brand-teal px-6 py-2 text-brand-teal transition-colors hover:bg-brand-teal hover:text-brand-dark">
+                    <button className="rounded-md border border-brand-teal px-6 py-2 text-brand-teal transition-colors hover:bg-teal-500 hover:text-brand-dark">
                       Apply Now
                     </button>
                   </div>
@@ -431,7 +431,7 @@ const CareersPage: React.FC = () => {
             <motion.a
               variants={fadeUp}
               href="mailto:careers@crok4it.com"
-              className="inline-block rounded-md bg-brand-teal px-8 py-4 text-lg font-semibold text-brand-dark transition-transform hover:scale-105"
+              className="inline-block rounded-md bg-teal-500 px-8 py-4 text-lg font-semibold text-brand-dark transition-transform hover:scale-105"
             >
               Start Your Journey
             </motion.a>

@@ -82,7 +82,7 @@ const Header: React.FC = () => {
             className={navLink}
           >
             Services
-            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100" />
           </a>
 
           {/* SUCCESS STORIES - Navigate to separate page */}
@@ -92,12 +92,12 @@ const Header: React.FC = () => {
             onClick={handlePageNavigation}
           >
             Success&nbsp;Stories
-            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
           <Link href="/blog" className={navLink} onClick={handlePageNavigation}>
             Insights
-            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
           <Link
@@ -106,13 +106,13 @@ const Header: React.FC = () => {
             onClick={handlePageNavigation}
           >
             Careers
-            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-brand-teal transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100" />
           </Link>
 
           <a
             href="/#contact"
             onClick={(e) => handleSectionNavigation(e, "contact")}
-            className="rounded-md bg-purple-700 px-5 py-2 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-brand-purple/90"
+            className="rounded-md bg-purple-700 px-5 py-2 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-purple-700/90"
           >
             Contact&nbsp;Us
           </a>
@@ -180,7 +180,7 @@ const Header: React.FC = () => {
           <a
             href="/#contact"
             onClick={(e) => handleSectionNavigation(e, "contact")}
-            className="w-full rounded-md bg-purple-700 px-6 py-3 text-center text-lg text-white transition-colors hover:bg-brand-purple/90"
+            className="w-full rounded-md bg-purple-700 px-6 py-3 text-center text-lg text-white transition-colors hover:bg-purple-700/90"
           >
             Contact&nbsp;Us
           </a>

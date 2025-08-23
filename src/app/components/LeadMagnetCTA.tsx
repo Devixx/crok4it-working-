@@ -16,7 +16,7 @@ const LeadMagnetCTA = () => {
   };
 
   return (
-    <section className="relative w-full bg-brand-purple text-white py-20 md:py-24 overflow-hidden">
+    <section className="relative w-full bg-purple-700 text-white py-20 md:py-24 overflow-hidden">
       <div
         className="absolute inset-0 z-0 opacity-10"
         style={{
@@ -46,7 +46,7 @@ const LeadMagnetCTA = () => {
           />
           <button
             type="submit"
-            className="bg-brand-teal text-brand-dark px-8 py-3 rounded-md font-bold hover:bg-white transition-colors duration-300 transform hover:scale-105 shadow-lg"
+            className="bg-teal-500 text-brand-dark px-8 py-3 rounded-md font-bold hover:bg-white transition-colors duration-300 transform hover:scale-105 shadow-lg"
           >
             Download Now
           </button>

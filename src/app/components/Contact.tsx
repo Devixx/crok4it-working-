@@ -92,7 +92,7 @@ const Contact: React.FC = () => {
       {/* decorative blurred gradient */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-20 right-1/2 h-[600px] w-[600px] translate-x-1/2 rounded-full bg-brand-teal/20 blur-[120px]"
+        className="pointer-events-none absolute -top-20 right-1/2 h-[600px] w-[600px] translate-x-1/2 rounded-full bg-teal-500/20 blur-[120px]"
       />
 
       <div className="container mx-auto px-4">
@@ -196,7 +196,7 @@ const Contact: React.FC = () => {
                 variants={itemFade}
                 className="flex items-start space-x-4"
               >
-                <span className="rounded-full bg-brand-purple/20 p-3 text-brand-teal">
+                <span className="rounded-full bg-purple-700/20 p-3 text-brand-teal">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -258,7 +258,7 @@ const Contact: React.FC = () => {
               <motion.div variants={itemFade}>
                 <button
                   type="submit"
-                  className="relative w-full overflow-hidden rounded-md bg-brand-purple px-6 py-3 text-lg font-bold
+                  className="relative w-full overflow-hidden rounded-md bg-purple-700 px-6 py-3 text-lg font-bold
                     text-white shadow-lg transition-transform duration-300 hover:scale-[1.03] focus:outline-none"
                 >
                   <span className="relative z-10">Send Message</span>

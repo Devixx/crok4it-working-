@@ -395,7 +395,7 @@ const CaseStudiesPage: React.FC = () => {
                   <div className="lg:col-span-2">
                     <div className="mb-6">
                       <div className="flex flex-wrap items-center gap-4 mb-3">
-                        <span className="px-3 py-1 text-sm bg-brand-teal/20 text-brand-teal rounded-full font-semibold">
+                        <span className="px-3 py-1 text-sm bg-teal-500/20 text-brand-teal rounded-full font-semibold">
                           {study.industry}
                         </span>
                         <span className="text-sm text-gray-400">
@@ -423,7 +423,7 @@ const CaseStudiesPage: React.FC = () => {
                         {study.technologies.map((tech, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 text-sm bg-brand-purple/20 text-white rounded-md"
+                            className="px-3 py-1 text-sm bg-purple-700/20 text-white rounded-md"
                           >
                             {tech}
                           </span>
@@ -439,7 +439,7 @@ const CaseStudiesPage: React.FC = () => {
                     <ul className="space-y-4">
                       {study.results.map((result, i) => (
                         <li key={i} className="flex items-start text-gray-300">
-                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-teal/20 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center mr-3 mt-0.5">
                             <svg
                               className="w-4 h-4 text-brand-teal"
                               fill="none"
