@@ -32,7 +32,7 @@ const Hero = () => {
     el.appendChild(renderer.domElement);
 
     /* geometry */
-    const COUNT = 1_000;
+    const COUNT = 500;
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
     const sizes = new Float32Array(COUNT);

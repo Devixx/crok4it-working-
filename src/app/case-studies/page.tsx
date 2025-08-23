@@ -40,7 +40,7 @@ const ParticleWaveBackground: React.FC = () => {
     container.appendChild(renderer.domElement);
 
     /* Create particle system with wave motion */
-    const particleCount = 2000;
+    const particleCount = 1000;
     const particles = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
